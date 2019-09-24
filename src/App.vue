@@ -3,10 +3,24 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      <Navigation v-if="currentUser"></Navigation>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import Navigation from "./components/Navigation";
+import { mapState } from "vuex";
+export default {
+  name: "app",
+  components: { Navigation },
+
+  computed: {
+    ...mapState(["currentUser"])
+  }
+};
+</script>
 
 <style lang="less">
 #app {
